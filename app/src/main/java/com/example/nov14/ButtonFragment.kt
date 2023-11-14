@@ -26,11 +26,12 @@ class ButtonFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_button, container, false).apply{
             findViewById<Button>(R.id.button).setOnClickListener{
-                (requireActivity() as FragmentCommunicationInterface).buttonIsClicked()
+                if(requireActivity()is FragmentCommunicationInterface)
+                        (requireActivity() as FragmentCommunicationInterface).buttonIsClicked()
             }
         }
     }
-    
+
     interface FragmentCommunicationInterface{
         fun buttonIsClicked()
     }
